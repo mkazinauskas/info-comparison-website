@@ -1,0 +1,278 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: modestukasai
+      changes:
+        - createTable:
+            tableName: items
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: unique_id
+                  type: VARCHAR(40)
+                  constraints:
+                    nullable: false,
+                    unique: true
+              - column:
+                  name: created
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: version
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: identifier
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: true
+  - changeSet:
+      id: 2
+      author: modestukasai
+      changes:
+        - createTable:
+            tableName: item_properties
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: unique_id
+                  type: VARCHAR(40)
+                  constraints:
+                    nullable: false,
+                    unique: true
+              - column:
+                  name: item_unique_id
+                  type: VARCHAR(40)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: property_descriptor_unique_id
+                  type: VARCHAR(40)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: version
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: value
+                  type: longvarchar
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 3
+      author: modestukasai
+      changes:
+        - createTable:
+            tableName: property_descriptors
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: unique_id
+                  type: VARCHAR(40)
+                  constraints:
+                    nullable: false,
+                    unique: true
+              - column:
+                  name: parent_property_descriptor_unique_id
+                  type: VARCHAR(40)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: created
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: version
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: sequence
+                  type: integer
+              - column:
+                  name: name
+                  type: VARCHAR(40)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: details
+                  type: VARCHAR(400)
+  - changeSet:
+      id: 4
+      author: modestukasai
+      changes:
+        - createTable:
+            tableName: photos
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: unique_id
+                  type: VARCHAR(40)
+                  constraints:
+                    nullable: false,
+                    unique: true
+              - column:
+                  name: created
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: version
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: item_unique_id
+                  type: VARCHAR(40)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: url_md5
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: VARCHAR(400)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: sequence
+                  type: integer
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 5
+      author: modestukasai
+      changes:
+        - createTable:
+            tableName: parsed_items
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: unique_id
+                  type: VARCHAR(40)
+                  constraints:
+                    nullable: false,
+                    unique: true
+              - column:
+                  name: created
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: version
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: identifier
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: item_unique_id
+                  type: VARCHAR(40)
+  - changeSet:
+      id: 6
+      author: modestukasai
+      changes:
+        - createTable:
+            tableName: comparisons
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: unique_id
+                  type: VARCHAR(40)
+                  constraints:
+                    nullable: false,
+                    unique: true
+              - column:
+                  name: created
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: version
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: sequence
+                  type: integer
+              - column:
+                  name: second_item_unique_id
+                  type: VARCHAR(40)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: first_item_unique_id
+                  type: VARCHAR(40)
+                  constraints:
+                    nullable: false

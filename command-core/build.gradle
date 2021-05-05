@@ -1,0 +1,19 @@
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    compile project(':events')
+    compile project(':command-core-api')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-actuator-docs')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.liquibase:liquibase-core')
+    compile('org.springframework.boot:spring-boot-configuration-processor')
+    compile('com.cloudinary:cloudinary-http44:1.14.0')
+    compile('commons-codec:commons-codec:1.2')
+    runtime('org.postgresql:postgresql')
+
+    compile('org.springframework.cloud:spring-cloud-starter-config')
+    compile('org.springframework.cloud:spring-cloud-starter-eureka')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    testRuntime('com.h2database:h2')
+}

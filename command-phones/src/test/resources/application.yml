@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: test
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+application:
+  phones:
+    parser:
+      job:
+        enabled: false
+  cloudinary:
+    apiKey: none
+    apiSecret: none
+    cloudName: none

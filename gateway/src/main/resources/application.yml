@@ -1,0 +1,17 @@
+server:
+  port: 8080
+zuul:
+  ignore-local-service: true
+  ignoredServices: "*"
+  ignoredPatterns: /health,/env
+  routes:
+    query-phones:
+      path: /api/**
+      serviceId: query-phones
+    ui-phones:
+      path: /**
+      serviceId: ui-phones
+eureka:
+  client:
+    service-url:
+       defaultZone: http://localhost:5005/eureka/

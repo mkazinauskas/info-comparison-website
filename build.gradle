@@ -1,0 +1,101 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.9.BUILD-SNAPSHOT'
+    }
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'idea'
+
+idea {
+    project {
+        vcs = 'Git'
+        jdkName = '1.8'
+        languageLevel = '1.8'
+    }
+}
+
+subprojects {
+    apply plugin: 'groovy'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    sourceCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+
+    dependencies {
+        compile('org.springframework.boot:spring-boot-starter')
+        compile('commons-lang:commons-lang:2.3')
+        compile('org.codehaus.groovy:groovy-all:2.4.11')
+        compile('com.google.guava:guava:22.0')
+
+        testCompile('org.springframework.boot:spring-boot-starter-test')
+        testCompile('org.spockframework:spock-core:1.1-groovy-2.4')
+        testCompile('org.spockframework:spock-spring:1.1-groovy-2.4')
+        testCompile('net.bytebuddy:byte-buddy:1.6.5')
+
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Dalston.SR4'
+        }
+    }
+
+    jar {
+        exclude('application*.yml')
+        exclude('bootstrap*.yml')
+        exclude('application*.properties')
+        exclude('bootstrap*.properties')
+    }
+}
+
+ext.testableProjects = [
+        project('command-core'),
+        project('query-core'),
+        project('ui-core'),
+        project('events')
+]
+
+ext.buildableProjects = [
+        project('command-phones'),
+        project('query-phones'),
+        project('ui-phones'),
+        project('config'),
+        project('discovery'),
+        project('gateway')
+]
+
+configure(testableProjects) {
+    afterEvaluate {
+        task buildAll {
+            dependsOn test
+        }
+    }
+}
+
+configure(buildableProjects) {
+    afterEvaluate {
+        task buildAll {
+            dependsOn build
+        }
+    }
+}
+
+configure(buildableProjects) {
+    springBoot {
+        executable = true
+    }
+}

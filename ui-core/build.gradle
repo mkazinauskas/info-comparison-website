@@ -1,0 +1,15 @@
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-mustache'
+    compile 'org.springframework.cloud:spring-cloud-starter-feign'
+    compile 'org.springframework.cloud:spring-cloud-starter-config'
+
+    compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
+
+    compile project(':query-core-api')
+
+//    compile 'org.webjars:jquery:3.2.1'
+//    compile 'org.webjars:bootstrap:4.0.0-beta.2'
+//    compile 'org.webjars.npm:popper.js:1.12.5'
+
+}

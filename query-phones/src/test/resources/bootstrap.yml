@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: query-phones
+  cloud:
+    config:
+      enabled: false

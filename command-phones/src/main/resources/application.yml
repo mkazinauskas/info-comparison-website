@@ -1,0 +1,38 @@
+server:
+  port: 5002
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:2345/command-phones
+    username: 'command-phones'
+    password: 'command-phones'
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+
+application:
+  phones:
+    parser:
+      job:
+        enabled: true
+    gsmArenaFetcher:
+      sleepMillis: 100000
+      from: 1
+      to: 50
+      retryOfFailed: true
+      url: http://gsmarena.com
+  mock:
+    event:
+      service: false
+  events:
+    eventStoreUrl: http://127.0.0.1:8889
+  cloudinary:
+    apiKey: 732882313263787
+    apiSecret: tekE7nnKMY8zIo_IrpAOrCZBrWE
+    cloudName: modestukasai
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:5005/eureka/

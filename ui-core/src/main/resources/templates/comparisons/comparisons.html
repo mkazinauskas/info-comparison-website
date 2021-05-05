@@ -1,0 +1,36 @@
+{{>elements/header}}
+<div class="container mt-3">
+    <div class="text-center">
+        <h1>{{ page.comparisons.h1 }}</h1>
+    </div>
+    {{#data.comparisons}}
+    <p>
+        <a href="/{{seoFirstItemName}}-versus-{{seoSecondItemName}}"
+           role="button" class="btn btn-light mt-1"
+           title="{{firstItemName}} versus {{secondItemName}}">{{firstItemName}} versus {{secondItemName}}</a>
+    </p>
+    {{/data.comparisons}}
+    {{#data.hasItems}}
+    <nav>
+        <ul class="pagination">
+            {{#pagination.hasPrevious}}
+            <li class="page-item"><a class="page-link"
+                                     href="/comparisons?page={{pagination.previous}}">Previous</a>
+            </li>
+            {{/pagination.hasPrevious}}
+            {{#pagination.current}}
+            <li class="page-item active"><a class="page-link"
+                                            href="/comparisons?page={{pagination.current}}">Current
+                page
+                {{pagination.current}}</a></li>
+            {{/pagination.current}}
+            {{#pagination.hasNext}}
+            <li class="page-item"><a class="page-link"
+                                     href="/comparisons?page={{pagination.next}}">Next</a>
+            </li>
+            {{/pagination.hasNext}}
+        </ul>
+    </nav>
+    {{/data.hasItems}}
+</div>
+{{>elements/footer}}

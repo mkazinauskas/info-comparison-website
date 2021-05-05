@@ -1,0 +1,16 @@
+include 'query-core'
+include 'query-phones'
+include 'query-core-api'
+
+include 'ui-core'
+include 'ui-phones'
+
+include 'command-core'
+include 'command-phones'
+include 'command-core-api'
+
+include 'events'
+include 'config'
+include 'gateway'
+include 'discovery'
+

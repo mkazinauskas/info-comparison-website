@@ -1,0 +1,19 @@
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    compile project(':query-core-api')
+    compile project(':events')
+    compile project(':command-core-api')
+    compile('org.springframework.cloud:spring-cloud-starter-config')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-actuator-docs')
+    compile('org.springframework.boot:spring-boot-starter-data-elasticsearch')
+    compile('org.springframework.boot:spring-boot-configuration-processor')
+    compile('org.springframework.cloud:spring-cloud-starter-feign')
+
+    compile('org.springframework.cloud:spring-cloud-starter-eureka')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+
+    runtime('net.java.dev.jna:jna')
+    testCompile('org.reflections:reflections:0.9.11')
+}

@@ -1,0 +1,13 @@
+version: '2'
+services:
+  command-phones-db:
+    container_name: command-phones-postgres-db
+    image: postgres:9.4
+    environment:
+      - POSTGRES_DB=command-phones
+      - POSTGRES_USER=command-phones
+      - POSTGRES_PASSWORD=command-phones
+    ports:
+      - 2345:5432
+    volumes:
+      - /db-data/command-phones-db:/var/lib/postgresql/data

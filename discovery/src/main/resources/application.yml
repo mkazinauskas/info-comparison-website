@@ -1,0 +1,14 @@
+server:
+  port: 5005
+eureka:
+  environment: test
+  instance:
+    hostname: localhost
+    preferIpAddress: true
+    ipAddress: 127.0.0.1
+  client:
+    useDnsForFetchingServiceUrls: false
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    waitTimeInMsWhenSyncEmpty: 0

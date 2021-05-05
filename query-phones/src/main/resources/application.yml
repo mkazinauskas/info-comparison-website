@@ -1,0 +1,17 @@
+server:
+  port: 5003
+application:
+  commandServiceName: command-phones
+  events:
+    parser:
+      job:
+        enabled: false
+spring:
+  data:
+    elasticsearch:
+      properties:
+        path.home: /data/phones-query
+eureka:
+  client:
+    service-url:
+       defaultZone: http://localhost:5005/eureka/

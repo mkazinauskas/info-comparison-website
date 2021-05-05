@@ -1,0 +1,35 @@
+package modzo.compare.command.core.domain.item.commands.create.photo
+
+import modzo.compare.command.core.domain.item.Items
+import modzo.compare.command.core.domain.validators.DomainException
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Component
+
+@Component
+class CreatePhotoValidator {
+
+    @Autowired
+    private Items items
+
+    void validate(CreatePhoto command) {
+        if (!items.findByUniqueId(command.itemUniqueId).isPresent()) {
+            throw new DomainException('ITEM_WITH_UNIQUE_ID_DOES_NOT_EXIST', "Item with unique id does not exists")
+        }
+
+        if (!command.name) {
+            throw new DomainException('PHOTO_NAME_HAS_TO_BE_PRESENT', "Photo name has to be present")
+        }
+
+        if (!command.uniqueId) {
+            throw new DomainException('PHOTO_UNIQUE_ID_HAS_TO_BE_PRESENT', "Photo unique id has to be present")
+        }
+
+        if (!command.description) {
+            throw new DomainException('PHOTO_DESCRIPTION_HAS_TO_BE_PRESENT', "Photo description has to be present")
+        }
+
+        if (!command.url) {
+            throw new DomainException('PHOTO_URL_HAS_TO_BE_PRESENT', "Photo url has to be present")
+        }
+    }
+}

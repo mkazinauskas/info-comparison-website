@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: phones-gateway
+  cloud:
+    config:
+      enabled: false
